@@ -127,7 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\LudoManager.cpp" />
     <ClCompile Include="LudoEngine.cpp" />
+    <ClCompile Include="Source\Models.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\LudoManager.h" />
+    <ClInclude Include="Source\Models.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
