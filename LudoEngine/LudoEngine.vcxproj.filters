@@ -18,18 +18,18 @@
     <ClCompile Include="LudoEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Models.cpp">
+    <ClCompile Include="LudoEngine\Models.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\LudoManager.cpp">
+    <ClCompile Include="LudoEngine\LudoManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Models.h">
+    <ClInclude Include="LudoEngine\Models.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\LudoManager.h">
+    <ClInclude Include="LudoEngine\LudoManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
