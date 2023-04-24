@@ -6,12 +6,21 @@ namespace LudoEngine {
 	LudoManager::LudoManager() {
 		turnID = 0;
 		turnCounter = 0;
+	}
 
+	void LudoManager::Init() {
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
 				pegs[i * 4 + j] = new Peg();
 				pegs[i * 4 + j]->corner = static_cast<Corner>(i);
 			}
+		}
+
+		safeCells[0] = safeCells[13] = safeCells[26] = safeCells[39] = true;
+		safeCells[8] = safeCells[21] = safeCells[34] = safeCells[47] = true;
+
+		for (int i = 52; i < 77; i++) {
+			safeCells[i] = true;
 		}
 	}
 
@@ -20,6 +29,11 @@ namespace LudoEngine {
 		unsigned char pickedPeg = PickPeg();
 		unsigned char pegIndex = turnID * 4 + pickedPeg;
 		pegs[pegIndex]->steps += diceRoll;
+		
+		turnReport.diceRoll = diceRoll;
+		turnReport.turnCounter = turnCounter;
+		turnReport.turnID = turnID;
+		
 		PassTurn();
 	}
 

@@ -10,8 +10,20 @@ namespace LudoEngine {
 		unsigned char turnID;
 		unsigned int turnCounter;
 
-		Peg* pegs[16];
+		const unsigned char* paths[4] =
+		{
+			bottomLeftPath,
+			topLeftPath,
+			topRightPath,
+			bottomRightPath
+		};
 
+		Peg* pegs[16] = {};
+		bool safeCells[77] = {};
+
+		TurnReport turnReport;
+
+		void Init();
 		void PlayTurn();
 		unsigned char RollDice();
 		unsigned char PickPeg();

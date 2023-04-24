@@ -24,12 +24,18 @@
     <ClCompile Include="LudoEngine\LudoManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LudoRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LudoEngine\Models.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LudoEngine\LudoManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LudoRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
