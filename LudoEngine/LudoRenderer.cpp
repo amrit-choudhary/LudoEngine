@@ -71,6 +71,9 @@ int LudoRenderer::Update() {
 	SDL_QueryTexture(textTexture, NULL, NULL, &textRect.w, &textRect.h);
 	SDL_RenderCopy(renderer, textTexture, NULL, &textRect);
 
+	SDL_FreeSurface(textSurface);
+	SDL_DestroyTexture(textTexture);
+
 	SDL_RenderPresent(renderer);
 
 
