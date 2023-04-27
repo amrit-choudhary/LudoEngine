@@ -7,10 +7,10 @@ namespace LudoEngine {
 	class LudoManager
 	{
 	public:
-		unsigned char turnID;
+		uint8 turnID;
 		unsigned int turnCounter;
 
-		const unsigned char* paths[4] =
+		const uint8* paths[4] =
 		{
 			bottomLeftPath,
 			topLeftPath,
@@ -18,16 +18,23 @@ namespace LudoEngine {
 			bottomRightPath
 		};
 
-		Peg* pegs[16] = {};
+		Peg* pegs[pegsCount] = {};
 		bool safeCells[77] = {};
 
 		TurnReport turnReport;
 
 		void Init();
-		void PlayTurn();
-		unsigned char RollDice();
-		unsigned char PickPeg();
-		void PassTurn();
+		uint8 PlayTurn();
+		uint8 RollDice();
+		uint8 PickPeg(uint8 turnID, uint8 diceRoll);
+		uint8 PassTurn();
+		
+		bool RuleLeaveHome(uint8 pegIndex, uint8 diceRoll);
+		bool RuleGoalPath(uint8 pegIndex, uint8 diceRoll);
+		void CheckKill(uint8 pegIndex);
+		uint8 GetCellIndex(uint8 pegIndex);
+		void SendPegHome(uint8 pegIndex);
+		bool CheckGameComplete();
 
 		LudoManager();
 	};

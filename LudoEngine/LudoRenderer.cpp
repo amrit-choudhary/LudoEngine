@@ -1,4 +1,5 @@
 #include "LudoRenderer.h"
+#include "LudoEngine/Models.h"
 #include <string>
 
 void LudoRenderer::Init() {
@@ -27,7 +28,7 @@ void LudoRenderer::Init() {
 int LudoRenderer::Update() {
 	SDL_RenderClear(renderer);
 
-	for (int i = 0; i < 77; i++) {
+	for (int i = 0; i < LudoEngine::cellsCount; i++) {
 		cellRect.x = origin.x + coords[i].x * gridSize.x;
 		cellRect.y = origin.y + coords[i].y * gridSize.y;
 
@@ -39,26 +40,26 @@ int LudoRenderer::Update() {
 		}
 	}
 
-	for (int i = 0; i < 16; i++) {
+	for (int i = 0; i < LudoEngine::pegsCount; i++) {
 		int steps = ludoManager->pegs[i]->steps;
-		const unsigned char* path = ludoManager->paths[static_cast<int>(ludoManager->pegs[i]->corner)];
+		const LudoEngine::uint8* path = ludoManager->paths[ludoManager->pegs[i]->cornerID];
 		int index = path[steps];
 
 		pegRect.x = origin.x + coords[index].x * gridSize.x + pegOffset.x;
 		pegRect.y = origin.y + coords[index].y * gridSize.y + pegOffset.y;
 
-		switch (ludoManager->pegs[i]->corner)
+		switch (ludoManager->pegs[i]->cornerID)
 		{
-		case LudoEngine::Corner::BottomLeft:
+		case 0:
 			SDL_RenderCopy(renderer, bottomLeftPegTex, NULL, &pegRect);
 			break;
-		case LudoEngine::Corner::TopLeft:
+		case 1:
 			SDL_RenderCopy(renderer, topLeftPegTex, NULL, &pegRect);
 			break;
-		case LudoEngine::Corner::TopRight:
+		case 2:
 			SDL_RenderCopy(renderer, topRightPegTex, NULL, &pegRect);
 			break;
-		case LudoEngine::Corner::BottomRight:
+		case 3:
 			SDL_RenderCopy(renderer, bottomRightPegTex, NULL, &pegRect);
 			break;
 		}
@@ -75,7 +76,6 @@ int LudoRenderer::Update() {
 	SDL_DestroyTexture(textTexture);
 
 	SDL_RenderPresent(renderer);
-
 
 	if (SDL_PollEvent(&event) && event.type == SDL_QUIT)
 		return 1;

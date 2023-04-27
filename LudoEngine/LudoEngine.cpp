@@ -11,10 +11,10 @@ int main(int argc, char** argv) {
 	ludoRenderer.Init();
 	
 	while (1) {
-		ludoManager.PlayTurn();
-		result = ludoRenderer.Update();
+		result = ludoManager.PlayTurn();
+		result += ludoRenderer.Update();
 		
-		if (result == 1) break;
+		if (result >= 1) break;
 	}
 
 	int exitCode = ludoRenderer.Exit();
